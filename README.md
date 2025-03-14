@@ -1,7 +1,7 @@
 # Sobre este repositorio
 
 El objetivo de este repositorio es ofrecer un conjunto de aplicaciones de ejemplo sobre como utilizar GCP usando C++. Para ello hemos creado 
-unos script que ayudan a descargar todo lo necesario para poder usar las librerias de C++de GCP usando el gestor de paquetes de C++ VCPKG.
+unos script que ayudan a descargar todo las librerias de C++ que usa GCP mediante el gestor de paquetes VCPKG.
 
 # Requisitos previos
 
@@ -12,7 +12,7 @@ sudo apt install git cmake curl g++ zip unzip tar
 
 # VCPKG
 
-## Introducción
+### Introducción
 
 VCPKG es un gestor de paquetes C/C++ gratuito para adquirir y gestionar bibliotecas. Elija entre 2554 bibliotecas de código abierto para descargar y construir en un solo paso o añada sus propias bibliotecas privadas para simplificar su proceso de construcción. Mantenido por el equipo de Microsoft C++ y colaboradores de código abierto.
 
@@ -23,7 +23,7 @@ VCPKG ofrece las siguiente funcionalidades:
 - Experiencia coherente y multiplataforma para Windows, macOS y Linux
 - Agregar fácilmente bibliotecas al proyecto con cualquier sistema de compilación y proyecto
 
-## Arquitectura interna
+### Arquitectura interna
 
 Un puerto vcpkg es una **receta de compilación con versiones** que genera un paquete. El tipo de paquete más común es una biblioteca de C/C++ que consta de encabezados, código fuente y archivos binarios.
 
@@ -31,7 +31,7 @@ Un triplete captura el **entorno de compilación** de destino (cpu, os, compilad
 
 Los manifiestos pueden declarar las dependencias directas y agregar características opcionales o restricciones de versión en un archivo de manifiesto. Los archivos de manifiesto se pueden comprobar en el sistema de control de código fuente y compartirlos con su equipo.
 
-## Instalacion de VPKCG en Linux 
+### Instalacion de VCPKG en Linux 
 
 [Seguir el tutorial oficial de Microsoft](https://learn.microsoft.com/es-es/vcpkg/get_started/get-started?pivots=shell-bash) o ejecutar los comandos que aparecen en la caja de código.
 
@@ -43,7 +43,7 @@ export VCPKG_ROOT=/path/to/vcpkg
 export PATH=$VCPKG_ROOT:$PATH
 ```
 
-## Instalacion de VPKCG en Linux (Opcional)
+### Instalacion de VCPKG en Linux (Opcional)
 
 Para crear un proyecto desde cero con VCPKG se tiene que ejecutar el comando 
 
@@ -59,7 +59,7 @@ vcpkg add port <NOMBRE_LIBRERIA>
 
 Las librerías disponibles puede verlas [aqui](https://vcpkg.io/en/packages?query=)
 
-# Instalar dependencias no dispoibles en VCPKG
+# Instalar dependencias no disponibles en VCPKG
 
 Google Cloud Platform CPP necesita de algunas libreria adicionales que VCPKG no proporciona, son el caso de CRC32 y Opentelemetry
 
