@@ -14,7 +14,7 @@ int main(int argc, char* argv[]) {
   // uses the default configuration for authentication and project id.
   auto client = google::cloud::storage::Client();
 
-  auto writer = client.WriteObject("test", "quickstart.txt");
+  auto writer = client.WriteObject(bucket_name, "quickstart.txt");
   writer << "Hello World!";
   writer.Close();
   if (!writer.metadata()) {
@@ -24,7 +24,7 @@ int main(int argc, char* argv[]) {
   }
   std::cout << "Successfully created object: " << *writer.metadata() << "\n";
 
-  auto reader = client.ReadObject("test", "quickstart.txt");
+  auto reader = client.ReadObject(bucket_name, "quickstart.txt");
   if (!reader) {
     std::cerr << "Error reading object: " << reader.status() << "\n";
     return 1;
