@@ -6,3 +6,4 @@ CMakeCache.txt
 FileMonitor
 Makefile
 vcpkg-manifest-install.log
+gcp_credential.json

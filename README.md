@@ -122,5 +122,49 @@ cmake --build cmake-out --target install -j ${NCPU:-4}
 
 En este código de ejemplo se utiliza la libreria Storage para escribir y leer un objeto en un bucket de GCP Storage.
 
-El proyecto utiliza CMake y VCPKG para utilizar las librerias y todas las dependecias que necesita Google Cloud CPP.
+El proyecto utiliza CMake y VCPKG para descargar y utilizar las librerias con todas las dependecias que necesita Google Cloud CPP.
 
+## Configurar las credenciales de autenticacion con GCP
+
+El cliente necesita las credenciales de autenticación (ADC) para obtener los permisos necesarios e interactuar con los servicios de GCP. Google ofrece diferentes [mecanismos de autenticación](https://cloud.google.com/docs/authentication/set-up-adc-local-dev-environment?hl=es-419) para las librerias cliente, como la federación de identidades o claves de cuentas de servicio.
+
+>[!Warning]
+La federación de claves de cuenta de servicio en entornod e producción puedan ocasionar graves problemas de seguridad. Se recomiendan otra alternativas o proteger las claves privadas de forma adecuada.
+
+Los códigos de ejemplo de este repositorioutilizan las claves de cuenta de servicio para autenticarse con GCP. Estas claves las exportamos desde la console de Google en formato JSON y usamos la variable de entorno GOOGLE_APPLICATION_CREDENTIALS=<PATH_CREDENTIAL_FILE_JSON> para indicar a la librería que fichero de credenciales tiene que utlizar.
+
+```
+export GOOGLE_APPLICATION_CREDENTIALS=<PATH_CREDENTIAL_FILE_JSON>
+```
+
+### Crear cuenta de servicio y descargar clave de cuenta de servicio
+
+En la console de Google ir a IAM > Cuentas de servicio > Crear cuenta de servicio
+
+![Cuentas de servicio IAM](resources/images/iam.png)
+
+Asignar los roles necesarios a la cuenta de servicio para crear y leer objetos en un Bucket "Storage Object Creator" y "Storage Object Viewer"
+
+![Roles Cuenta de servicio](resources/images/roles.png)
+
+Accede al detalle de la cuenta de servicio, que acabas de crear, y crea una clave de servicio IAM > Cuentas de servicios > <CUENTA_DE_SERVICIO> > Claves
+
+![clave](resources/images/clave.png)
+
+>[!Warning]
+El fichero JSON que se descarga al crear la clave debe guardarse de forma segura y tendrás que utilizarlo junto con tu aplicacion C++ para autenticarse en GCP
+
+## Compilar
+
+```
+cd gcp-examples
+chmod +x build.sh
+./build.sh
+```
+
+## Ejecutar
+
+```
+chmod +x FileMonitor
+./FileMonitor <bucket_name>
+```
