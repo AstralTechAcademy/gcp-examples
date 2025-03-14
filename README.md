@@ -59,9 +59,9 @@ vcpkg add port <NOMBRE_LIBRERIA>
 
 Las librerías disponibles puede verlas [aqui](https://vcpkg.io/en/packages?query=)
 
-# Instalar dependencias no disponibles en VCPKG
+# Instalar dependencias no disponibles en VCPKG (opcional)
 
-Google Cloud Platform CPP necesita de algunas libreria adicionales que VCPKG no proporciona, son el caso de CRC32 y Opentelemetry
+En caso de errores con los paquetes de VCPKG puede instalar las librerías de forma manual, por ejemplo, CRC32 y opentelemetry
 
 ### CRC32
 
